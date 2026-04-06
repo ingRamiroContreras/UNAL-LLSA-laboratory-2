@@ -1,0 +1,66 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+4462182480[ label="{Model|}"]
+
+4461736528[ label="{*Element|}"]
+
+4461735568[ label="{*Component|}"]
+
+4461423984[ label="{PresentationComponent|type: PresentationComponentType\lname: ID\l}"]
+
+4461424592[ label="{CommunicationComponent|type: CommunicationComponentType\lname: ID\l}"]
+
+4461165552[ label="{LogicComponent|type: LogicComponentType\lname: ID\l}"]
+
+4461231056[ label="{DataComponent|type: DataComponentType\lname: ID\l}"]
+
+4461229152[ label="{PhysicalComponent|type: PhysicalComponentType\lname: ID\l}"]
+
+4461956912[ label="{Connector|type: ConnectorType\l}"]
+
+
+
+4462182480 -> 4461736528[arrowtail=diamond, dir=both, headlabel="elements 0..*"]
+4461736528 -> 4461735568 [dir=back]
+4461736528 -> 4461956912 [dir=back]
+4461735568 -> 4461423984 [dir=back]
+4461735568 -> 4461424592 [dir=back]
+4461735568 -> 4461165552 [dir=back]
+4461735568 -> 4461231056 [dir=back]
+4461735568 -> 4461229152 [dir=back]
+4461956912 -> 4461735568[headlabel="from "]
+4461956912 -> 4461735568[headlabel="to "]
+match_rules [ shape=plaintext, label=< <table>
+	<tr>
+		<td><b>CommunicationComponentType</b></td><td>api_gateway</td>
+	</tr>
+	<tr>
+		<td><b>ConnectorType</b></td><td>data_flow|control_command|event_notification|dependency</td>
+	</tr>
+	<tr>
+		<td><b>DataComponentType</b></td><td>database|data_lake</td>
+	</tr>
+	<tr>
+		<td><b>LogicComponentType</b></td><td>microservice|authority_service</td>
+	</tr>
+	<tr>
+		<td><b>PhysicalComponentType</b></td><td>onboard_unit|sensor|actuator|balise</td>
+	</tr>
+	<tr>
+		<td><b>PresentationComponentType</b></td><td>web_interface|operator_ui|driver_ui</td>
+	</tr>
+</table> >]
+
+
+}

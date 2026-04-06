@@ -1,0 +1,28 @@
+
+    digraph textX {
+    fontname = "Bitstream Vera Sans"
+    fontsize = 8
+    node[
+        shape=record,
+        style=filled,
+        fillcolor=aliceblue
+    ]
+    nodesep = 0.3
+    edge[dir=black,arrowtail=empty]
+
+
+4460854112 -> 4460854448 [label="elements:0" arrowtail=diamond dir=both]
+4460854448[label="{portal:PresentationComponent|+type:str='web_interface'\l}"]
+4460854112 -> 4460854784 [label="elements:1" arrowtail=diamond dir=both]
+4460854784[label="{api_gateway:CommunicationComponent|+type:str='api_gateway'\l}"]
+4460854112 -> 4461756496 [label="elements:2" arrowtail=diamond dir=both]
+4461756496 -> 4460854448 [label="from" ]
+4461756496 -> 4460854784 [label="to" ]
+4461756496[label="{:Connector|+type:str='data_flow'\l}"]
+4460854112 -> 4461469264 [label="elements:3" arrowtail=diamond dir=both]
+4461469264 -> 4460854784 [label="from" ]
+4461469264 -> 4460854448 [label="to" ]
+4461469264[label="{:Connector|+type:str='data_flow'\l}"]
+4460854112[label="{:Model|}"]
+
+}

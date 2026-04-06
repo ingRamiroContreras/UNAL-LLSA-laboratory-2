@@ -1,0 +1,59 @@
+architecture:
+
+    component presentation web_interface portal 
+    component presentation driver_ui driver_interface 
+
+    component communication api_gateway api_gateway 
+    component communication gprs_modem modem
+
+    component logic microservice passengers_ms  
+    component logic microservice routes_ms 
+    component logic microservice trains_ms 
+    component logic microservice tickets_ms
+
+    component logic authority_service mas
+    component logic interlocking_service ixl
+    component logic radio_block_service rbc
+
+    component physical onboard_unit onboard_unit  
+    component physical balise balise
+    component physical lineside_electronic leu
+    component physical actuator brake_actuator  
+    component physical gps gps_galileo 
+
+    component data database passengers_db
+    component data database routes_db  
+    component data database trains_db
+    component data database tickets_db
+    component data data_lake dl 
+    
+    connector data_flow portal -> api_gateway
+    connector data_flow api_gateway -> trains_ms
+    connector data_flow api_gateway -> tickets_ms
+    connector data_flow tickets_ms -> routes_ms
+    connector data_flow tickets_ms -> passengers_ms
+    connector data_flow tickets_ms -> trains_ms
+
+    connector data_flow trains_ms -> mas
+    connector data_flow ixl -> mas
+    connector data_flow leu -> ixl
+
+    connector dependency passengers_ms -> passengers_db  
+    connector dependency routes_ms -> routes_db
+    connector dependency trains_ms -> trains_db
+    connector dependency tickets_ms -> tickets_db
+
+    connector data_flow passengers_ms -> dl
+    connector data_flow routes_ms -> dl
+
+    connector data_flow onboard_unit -> modem
+    connector data_flow onboard_unit -> driver_interface 
+    connector data_flow modem -> onboard_unit
+    connector data_flow balise -> onboard_unit
+    connector data_flow leu -> balise
+    connector data_flow gps_galileo -> onboard_unit
+    connector control_command onboard_unit -> brake_actuator 
+
+
+  
+    

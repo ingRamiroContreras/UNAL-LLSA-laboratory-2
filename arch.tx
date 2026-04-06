@@ -1,0 +1,79 @@
+Model:
+    'architecture:'
+    elements*=Element
+;
+
+Element:
+    Component | Connector
+;
+
+Component:
+    PresentationComponent
+    | CommunicationComponent
+    | LogicComponent
+    | DataComponent
+    | PhysicalComponent
+;
+
+PresentationComponent:
+    'component' 'presentation' type=PresentationComponentType name=ID
+;
+
+CommunicationComponent:
+    'component' 'communication' type=CommunicationComponentType name=ID
+;
+
+LogicComponent:
+    'component' 'logic' type=LogicComponentType name=ID
+;
+
+DataComponent:
+    'component' 'data' type=DataComponentType name=ID
+;
+
+PhysicalComponent:
+    'component' 'physical' type=PhysicalComponentType name=ID
+;
+
+PresentationComponentType:
+    'web_interface'
+    | 'operator_ui'
+    | 'driver_ui'
+;
+
+CommunicationComponentType:
+    'api_gateway'
+    | 'gprs_modem'
+;
+
+LogicComponentType:
+    'microservice'
+    | 'authority_service'
+    | 'interlocking_service'
+    | 'radio_block_service'
+;
+
+DataComponentType:
+    'database'
+    | 'data_lake'
+;
+
+PhysicalComponentType:
+    'onboard_unit'
+    | 'sensor'
+    | 'actuator'
+    | 'balise'
+    | 'lineside_electronic'
+    | 'gps'
+;
+
+Connector:
+    'connector' type=ConnectorType from=[Component] '->' to=[Component]
+;
+
+ConnectorType:
+    'data_flow'
+    | 'control_command'
+    | 'event_notification'
+    | 'dependency'
+;
