@@ -38,6 +38,9 @@ architecture:
     connector data_flow ixl -> mas
     connector data_flow leu -> ixl
 
+    connector data_flow mas -> modem
+    connector data_flow rbc -> modem
+
     connector dependency passengers_ms -> passengers_db  
     connector dependency routes_ms -> routes_db
     connector dependency trains_ms -> trains_db
